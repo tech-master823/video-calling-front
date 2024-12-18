@@ -1,0 +1,105 @@
+[debug] [2024-12-14T13:02:15.494Z] ----------------------------------------------------------------------
+[debug] [2024-12-14T13:02:15.500Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\RSH\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-12-14T13:02:15.501Z] CLI Version:   13.29.1
+[debug] [2024-12-14T13:02:15.501Z] Platform:      win32
+[debug] [2024-12-14T13:02:15.502Z] Node Version:  v20.14.0
+[debug] [2024-12-14T13:02:15.502Z] Time:          Sat Dec 14 2024 22:02:15 GMT+0900 (Japan Standard Time)
+[debug] [2024-12-14T13:02:15.502Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-12-14T13:02:15.513Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-14T13:02:15.513Z] > authorizing via signed-in user (carlsh0823@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\RSH\Documents\portfolio\main-project\frontend
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2024-12-14T13:03:47.677Z] Checked if tokens are valid: true, expires at: 1734184705736
+[debug] [2024-12-14T13:03:47.677Z] Checked if tokens are valid: true, expires at: 1734184705736
+[debug] [2024-12-14T13:03:47.679Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2024-12-14T13:03:47.679Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"abcdef","name":"abcdef"}
+[debug] [2024-12-14T13:03:53.808Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 409
+[debug] [2024-12-14T13:03:53.808Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"error":{"code":409,"message":"Requested entity already exists","status":"ALREADY_EXISTS"}}
+[debug] [2024-12-14T13:03:54.712Z] FirebaseError: Request to https://cloudresourcemanager.googleapis.com/v1/projects had HTTP Error: 409, Requested entity already exists
+    at responseToError (C:\Users\RSH\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:52:12)
+    at RetryOperation._fn (C:\Users\RSH\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:312:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to create project because there is already a project with ID abcdef. Please try again with a unique project ID.
+[debug] [2024-12-14T13:04:23.287Z] ----------------------------------------------------------------------
+[debug] [2024-12-14T13:04:23.293Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\RSH\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-12-14T13:04:23.295Z] CLI Version:   13.29.1
+[debug] [2024-12-14T13:04:23.296Z] Platform:      win32
+[debug] [2024-12-14T13:04:23.297Z] Node Version:  v20.14.0
+[debug] [2024-12-14T13:04:23.297Z] Time:          Sat Dec 14 2024 22:04:23 GMT+0900 (Japan Standard Time)
+[debug] [2024-12-14T13:04:23.297Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-12-14T13:04:23.311Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-14T13:04:23.311Z] > authorizing via signed-in user (carlsh0823@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\RSH\Documents\portfolio\main-project\frontend
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2024-12-14T13:04:53.973Z] Checked if tokens are valid: true, expires at: 1734184705736
+[debug] [2024-12-14T13:04:53.973Z] Checked if tokens are valid: true, expires at: 1734184705736
+[debug] [2024-12-14T13:04:53.975Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2024-12-14T13:04:53.975Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"master-dev0823","name":"master-dev0823"}
+[debug] [2024-12-14T13:05:01.170Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2024-12-14T13:05:01.174Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/cp.5238215935877615429"}
+[debug] [2024-12-14T13:05:01.183Z] Checked if tokens are valid: true, expires at: 1734184705736
+[debug] [2024-12-14T13:05:01.185Z] Checked if tokens are valid: true, expires at: 1734184705736
+[debug] [2024-12-14T13:05:01.186Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5238215935877615429 [none]
+[debug] [2024-12-14T13:05:02.657Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5238215935877615429 200
+[debug] [2024-12-14T13:05:02.657Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5238215935877615429 {"name":"operations/cp.5238215935877615429"}
+[debug] [2024-12-14T13:05:03.169Z] [Project Creation Poller] Retrying task index 0
+[debug] [2024-12-14T13:05:03.173Z] Checked if tokens are valid: true, expires at: 1734184705736
+[debug] [2024-12-14T13:05:03.179Z] Checked if tokens are valid: true, expires at: 1734184705736
+[debug] [2024-12-14T13:05:03.181Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5238215935877615429 [none]
+[debug] [2024-12-14T13:05:03.998Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5238215935877615429 200
+[debug] [2024-12-14T13:05:04.000Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5238215935877615429 {"name":"operations/cp.5238215935877615429","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","gettable":true}}
+[debug] [2024-12-14T13:05:05.006Z] [Project Creation Poller] Retrying task index 0
+[debug] [2024-12-14T13:05:05.010Z] Checked if tokens are valid: true, expires at: 1734184705736
+[debug] [2024-12-14T13:05:05.010Z] Checked if tokens are valid: true, expires at: 1734184705736
+[debug] [2024-12-14T13:05:05.011Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5238215935877615429 [none]
+[debug] [2024-12-14T13:05:05.811Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5238215935877615429 200
+[debug] [2024-12-14T13:05:05.812Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5238215935877615429 {"name":"operations/cp.5238215935877615429","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","gettable":true,"ready":true},"done":true,"response":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.Project","projectNumber":"881233149418","projectId":"master-dev0823","lifecycleState":"ACTIVE","name":"master-dev0823","createTime":"2024-12-14T13:05:03.666395Z"}}
+[debug] [2024-12-14T13:05:05.827Z] Checked if tokens are valid: true, expires at: 1734184705736
+[debug] [2024-12-14T13:05:05.827Z] Checked if tokens are valid: true, expires at: 1734184705736
+[debug] [2024-12-14T13:05:05.828Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1beta1/projects/master-dev0823:addFirebase [none]
+[debug] [2024-12-14T13:05:11.715Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1beta1/projects/master-dev0823:addFirebase 403
+[debug] [2024-12-14T13:05:11.716Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/master-dev0823:addFirebase {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2024-12-14T13:05:11.719Z] Request to https://firebase.googleapis.com/v1beta1/projects/master-dev0823:addFirebase had HTTP Error: 403, The caller does not have permission
+[debug] [2024-12-14T13:05:12.612Z] FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects/master-dev0823:addFirebase had HTTP Error: 403, The caller does not have permission
+    at responseToError (C:\Users\RSH\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:52:12)
+    at RetryOperation._fn (C:\Users\RSH\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:312:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to add Firebase to Google Cloud Platform project. See firebase-debug.log for more info.
