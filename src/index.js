@@ -3,11 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AgoraRTC, { AgoraRTCProvider } from 'agora-rtc-react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const client = AgoraRTC.createClient({
+  mode: 'rtc',
+  codec: 'vp8'
+});
+
 root.render(
   <React.StrictMode>
-    <App />
+    <AgoraRTCProvider client={client}>
+    <BrowserRouter basename='/video-calling-front'>
+      <Routes>
+        <Route path="/" element={<App />} />
+      </Routes>
+      </BrowserRouter>
+    </AgoraRTCProvider>
   </React.StrictMode>
 );
 

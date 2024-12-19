@@ -1,129 +1,107 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
-  MeetingProvider,
-  useMeeting,
-  useParticipant,
-} from "@videosdk.live/react-sdk";
-import ReactPlayer from "react-player";
+  LocalUser,
+  RemoteUser,
+  useIsConnected,
+  useJoin,
+  useLocalMicrophoneTrack,
+  useLocalCameraTrack,
+  usePublish,
+  useRemoteUsers,
+} from "agora-rtc-react";
+import React, { useState } from "react";
 
-function ParticipantView(props) {
-  const micRef = useRef(null);
-  const videoRef = useRef(null);
+import "./style.css";
+import logo from "./logo.svg";
 
-  const { webcamStream, micStream, webcamOn, micOn, isLocal, displayName } =
-    useParticipant(props.participantId);
+export const Basics = () => {
+  const [calling, setCalling] = useState(false);
+  const isConnected = useIsConnected();
+  const [appId, setAppId] = useState("51c77cfa380a4dc9822f7d6c27139a5d");
+  const [channel, setChannel] = useState("");
+  const [token, setToken] = useState("");
 
-  const videoStream = useMemo(() => {
-    if (webcamOn && webcamStream) {
-      const mediaStream = new MediaStream();
-      mediaStream.addTrack(webcamStream.track);
-      return mediaStream;
-    }
-  }, [webcamStream, webcamOn]);
-
-  useEffect(() => {
-    if (micRef.current) {
-      if (micOn && micStream) {
-        const mediaStream = new MediaStream();
-        mediaStream.addTrack(micStream.track);
-
-        micRef.current.srcObject = mediaStream;
-        micRef.current
-          .play()
-          .catch((error) =>
-            console.error("videoElem.current.play() failed", error)
-          );
-      } else {
-        micRef.current.srcObject = null;
-      }
-    }
-  }, [micStream, micOn]);
-
-  useEffect(() => {
-    console.log(`Video Stream====>`, videoStream);
-    if (!webcamStream) return;
-    const mediaStream = new MediaStream();
-    mediaStream.addTrack(webcamStream.track);
-    videoRef.current.srcObject = mediaStream;
-  }, [webcamStream]);
+  useJoin({ appid: "9afd0f8a852e45ee80bb181ada81cdd0", channel: "channel", token: null }, true);
+  //local user
+  const [micOn, setMic] = useState(true);
+  const [cameraOn, setCamera] = useState(true);
+  const { localMicrophoneTrack } = useLocalMicrophoneTrack(micOn);
+  const { localCameraTrack } = useLocalCameraTrack(cameraOn);
+  usePublish([localMicrophoneTrack, localCameraTrack]);
+  //remote users
+  const remoteUsers = useRemoteUsers();
 
   return (
-    <div>
-      <audio ref={micRef} autoPlay playsInline muted={isLocal} />
-      <video ref={videoRef} autoPlay playsInline muted={isLocal} />
-      {/* {webcamOn && (
-        <ReactPlayer
-          playsinline // very very imp prop
-          pip={false}
-          light={false}
-          controls={false}
-          muted={true}
-          playing={true}
-          url={videoStream}
-          height={"300px"}
-          width={"300px"}
-          onError={(err) => {
-            console.log(err, "participant video error");
-          }}
-        />
-      )} */}
-    </div>
-  );
-}
-
-function MeetingView() {
-  const [joined, setJoined] = useState(null);
-  //Get the method which will be used to join the meeting.
-  //We will also get the participants list to display all participants
-  const { join, participants } = useMeeting({
-    //callback for when meeting is joined successfully
-    onMeetingJoined: () => {
-      setJoined("JOINED");
-    }
-  });
-  const joinMeeting = () => {
-    setJoined("JOINING");
-    join();
-  };
-
-  useEffect(() => {
-    joinMeeting();
-  }, []);
-
-  return (
-    <div className="container">
-      {joined && joined == "JOINED" ? (
-        <div>
-          {[...participants.keys()].map((participantId) => (
-            <ParticipantView
-              participantId={participantId}
-              key={participantId}
+    <>
+      <div className="room">
+        {isConnected ? (
+          <div className="user-list">
+            <div className="user">
+              <LocalUser
+                audioTrack={localMicrophoneTrack}
+                cameraOn={cameraOn}
+                micOn={micOn}
+                videoTrack={localCameraTrack}
+                cover="https://www.agora.io/en/wp-content/uploads/2022/10/3d-spatial-audio-icon.svg"
+              >
+                <samp className="user-name">You</samp>
+              </LocalUser>
+            </div>
+            {remoteUsers.map((user) => (
+              <div className="user" key={user.uid}>
+                <RemoteUser cover="https://www.agora.io/en/wp-content/uploads/2022/10/3d-spatial-audio-icon.svg" user={user}>
+                  <samp className="user-name">{user.uid}</samp>
+                </RemoteUser>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="join-room">
+            <input
+              onChange={e => setAppId(e.target.value)}
+              placeholder="<Your app ID>"
+              value={appId}
             />
-          ))}
+            <input
+              onChange={e => setChannel(e.target.value)}
+              placeholder="<Your channel Name>"
+              value={channel}
+            />
+            <input
+              onChange={e => setToken(e.target.value)}
+              placeholder="<Your token>"
+              value={token}
+            />
+
+            <button
+              className={`join-channel ${!appId || !channel ? "disabled" : ""}`}
+              disabled={!appId || !channel}
+              onClick={() => setCalling(true)}
+            >
+              <span>Join Channel</span>
+            </button>
+          </div>
+        )}
+      </div>
+      {isConnected && (
+        <div className="control">
+          <div className="left-control">
+            <button className="btn" onClick={() => setMic(a => !a)}>
+              <i className={`i-microphone ${!micOn ? "off" : ""}`} />
+            </button>
+            <button className="btn" onClick={() => setCamera(a => !a)}>
+              <i className={`i-camera ${!cameraOn ? "off" : ""}`} />
+            </button>
+          </div>
+          <button
+            className={`btn btn-phone ${calling ? "btn-phone-active" : ""}`}
+            onClick={() => setCalling(a => !a)}
+          >
+            {calling ? <i className="i-phone-hangup" /> : <i className="i-mdi-phone" />}
+          </button>
         </div>
-      ) : joined && joined == "JOINING" ? (
-        <p>Joining the meeting...</p>
-      ) : (
-        <button onClick={joinMeeting}>Join the meeting</button>
       )}
-    </div>
+    </>
   );
-}
-const App = () => {
-  return (
-    <MeetingProvider
-      config={{
-        meetingId: "k1cf-9i1v-ksyq",
-        micEnabled: true,
-        webcamEnabled: true,
-        name: "Carl's Org",
-        maxResolution: "sd",
-        metaData: { role: "student" }
-      }}
-      token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiI2YTI3NmNlZS03MmUyLTQxYjUtOTgwNC01YTM2OGQ0ODE4Y2MiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTczNDQ4ODY0OSwiZXhwIjoxNzM0NTc1MDQ5fQ.PLoYIYcwPqjIb-lnQTnm8kW7iK-3nRn7LWMM_t5G87E"
-    >
-      <MeetingView />
-    </MeetingProvider>
-  )
 };
-export default App;
+
+export default Basics;
