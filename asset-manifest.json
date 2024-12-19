@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/video-calling-front/static/css/main.f189a824.css",
-    "main.js": "/video-calling-front/static/js/main.99f0f560.js",
+    "main.js": "/video-calling-front/static/js/main.2a7483d7.js",
     "static/js/453.ed3810f9.chunk.js": "/video-calling-front/static/js/453.ed3810f9.chunk.js",
     "static/media/logo.svg": "/video-calling-front/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/video-calling-front/index.html",
     "main.f189a824.css.map": "/video-calling-front/static/css/main.f189a824.css.map",
-    "main.99f0f560.js.map": "/video-calling-front/static/js/main.99f0f560.js.map",
+    "main.2a7483d7.js.map": "/video-calling-front/static/js/main.2a7483d7.js.map",
     "453.ed3810f9.chunk.js.map": "/video-calling-front/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f189a824.css",
-    "static/js/main.99f0f560.js"
+    "static/js/main.2a7483d7.js"
   ]
 }
